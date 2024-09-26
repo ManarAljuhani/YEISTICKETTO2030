@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=3.0">
+    <title>YEIS Ticket to 2030</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+
+        .center {
+            text-align: center;
+            color: blue;
+        }
+
+        .center2 {
+            text-align: center;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="center">YEIS Ticket to 2030</h1>
+    <p class="center2">Here you can find the largest projects of Saudi vision 2030 <br>Programmed by computer teacher: Ms. Manar</p>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([23.8859, 45.0792], 5); // Center on Saudi Arabia
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 30,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Array of projects
+        var projects = [
+            {
+                name: "NEOM",
+                coords: [27.3005, 35.1747],
+                description: "<p>Located in the temperate northwest of Saudi Arabia, NEOM’s diverse climate offers both sun-soaked beaches and snow-capped mountains.</p>",
+                video: "https://www.youtube.com/embed/z2Fy4e-ZUb8"
+            },
+            {
+                name: "TROJENA",
+                coords: [28.6762, 35.3145],
+                description: "<br>JOURNEY TO NEW HEIGHTS<br><p>Trojena will be an iconic, world-class destination, blending natural and developed landscapes.</p>",
+                video: "https://www.youtube.com/embed/OiyAzP9PotM"
+            },
+            {
+                name: "THE LINE",
+                coords: [28.156385504096555, 34.62347794405198],
+                description: "<br>THE FUTURE OF URBAN LIVING<br><p>A cognitive city stretching across 170 kilometers.</p>",
+                video: "https://www.youtube.com/embed/0kz5vEqdaSc"
+            },
+            {
+                name: "MEGNA",
+                coords: [28.40289367473967, 34.75839565492586],
+                description: "<br><p>NEOM’s premier coastal region of Magna is a treasure of tomorrow.</p>",
+                video: "https://www.youtube.com/embed/noKohREpVXM"
+            },
+            {
+                name: "Red Sea Project",
+                coords: [25.757445203543465, 37.13495488602414],
+                description: "<br><p>Red Sea Global (RSG), where luxury, sustainability, and innovation converge.</p>",
+                video: "https://www.youtube.com/embed/cZ_HzivTrmM"
+            },
+            {
+                name: "Qiddiya",
+                coords: [24.9828, 46.6823],
+                description: "<br><p>Qiddiya is the world’s most passionate Ambassador of Play.</p>",
+                video: "https://www.youtube.com/embed/gAKhEOCIF6M"
+            },
+            {
+                name: "New Murabaa",
+                coords: [24.77944786577061, 46.60084391781816],
+                description: "<br><p>New Murabba is Riyadh’s new downtown.</p>",
+                video: "https://www.youtube.com/embed/bRh_oy6yItI"
+            },
+            {
+                name: "SPARK",
+                coords: [25.95944792607792, 49.870044213052225],
+                description: "<br><p>King Salman Energy Park (SPARK) is being developed as an industrial ecosystem.</p>",
+                video: "https://www.youtube.com/embed/bqhnZC3A7Uk"
+            },
+            {
+                name: "Soudah Development (SD)",
+                coords: [18.219761027461743, 42.51679695171718],
+                description: "<br><p>Soudah Development (SD) is a real estate development company owned by the PIF of Saudi Arabia.</p>",
+                video: "https://www.youtube.com/embed/T0LajpoPRYg"
+            },
+            {
+                name: "Diriyah Project",
+                coords: [24.72909588737852, 46.59110762094591],
+                description: "<br><p>Historical and tourism landmarks, showcasing 300 years of Saudi Arabia’s history.</p>",
+                video: "https://www.youtube.com/embed/xb911oWlO3A"
+            },
+            {
+                name: "NEOM Sindalah Island",
+                coords: [28.047048377875, 34.714527429026894],
+                description: "<br><p>NEOM's first destination, the island of Sindalah, will soon open.</p>",
+                video: "https://www.youtube.com/embed/waraq6ejbGw"
+            }
+        ];
+
+        // Add markers for each project
+        projects.forEach(project => {
+            var marker = L.marker(project.coords).addTo(map);
+            marker.bindPopup(`
+                <b>${project.name}</b><br>
+                ${project.description}<br>
+                <iframe width="300" height="200" src="${project.video}" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            `);
+        });
+    </script>
+</body>
+
+</html>
